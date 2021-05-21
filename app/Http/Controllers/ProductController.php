@@ -13,9 +13,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = \App\Models\Product::all();
+        // $products = \App\Models\Product::all();
+        $inStock = \App\Models\Product::instock()->get();
 
-        return view('viewproducts', ['allProducts' => $products]);
+        return view('viewproducts', ['allProducts' => $inStock]);
     }
 
     /**
@@ -36,6 +37,12 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required',
+            'description' => 'required|max:255',
+            'price' => 'required|numeric|gt:0',
+            'count' => 'required'
+        ]);
         \App\Models\Product::create([
           'name' => $request->get('name'),
           'description' => $request->get('description'),

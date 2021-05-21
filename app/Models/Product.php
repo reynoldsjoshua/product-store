@@ -15,4 +15,16 @@ class Product extends Model
            'price',
            'description',
         ];
+
+
+     /**
+     * Scope a query to only find out of stock products.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeInStock($query)
+    {
+        return $query->where('count', '>', 0);
+    }
 }
