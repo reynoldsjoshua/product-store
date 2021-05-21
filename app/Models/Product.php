@@ -18,7 +18,7 @@ class Product extends Model
 
 
      /**
-     * Scope a query to only find out of stock products.
+     * Scope a query to only find products that are stocked.
      *
      * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @return \Illuminate\Database\Eloquent\Builder
