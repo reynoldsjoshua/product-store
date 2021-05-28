@@ -22,13 +22,13 @@
                 @enderror
             </div>
             <div class="form-input">
-                <label>Count</label> <input class="w-full h-8" type="number" name="count">
+                <label>Count</label> <input class="w-full h-8" type="number" name="count" value="{{ old('price') }}">
                 @error('count')
                 <span class="text-red-500">{{$message}}</span>
                 @enderror
             </div>
             <div class="form-input">
-                <label>Price</label> <input class="w-full h-8" type="number" name="price">
+                <label>Price</label> <input class="w-full h-8" type="number" name="price" min="0.00" max="10000.00">
                 @error('price')
                 <span class="text-red-500">{{$message}}</span>
                 @enderror
